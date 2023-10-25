@@ -1,12 +1,48 @@
 ---
+const pageTitle = "About Me";
 
+const identity = {
+    firstName: "Yonathan",
+    country: "Israel",
+    occupation: "frontend developer",
+    hobbies: ["3D Modeling", "Video games", "Table-Top Games"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Astro</title>
+    <title>{pageTitle}</title>
+</head>
 <body>
 <header class="header">
     <a class="home" href="/">Home</a>___<a class="about" href="/about">About</a>___<a class="blog" href="/blog">Blog</a>
 </header>
-<h1>About me.</h1>
-<h2>Hello! My name is Yonathan!</h2>
-<p>I'm frontend developer using React, NextJs and Astro</p>
+<h1>{pageTitle}</h1>
+<h2>Hello! My name is {identity.firstName}!</h2>
+<p>I live in {identity.country} and I work as a {identity.occupation}.</p>
+{identity.hobbies.length >= 2 &&
+        <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+}
 <p>This is my little blog about everything and nothing</p>
+
+<p>My skills are:</p>
+<ul>
+    {skills.map((skill) => <li>{skill}</li>)}
+</ul>
+
+
+
+{happy && <p>I am happy to be learning Astro!</p>}
+
+{finished && <p>I finished this tutorial!</p>}
+
+{goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
 </body>
