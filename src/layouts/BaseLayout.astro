@@ -1,0 +1,28 @@
+---
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+const {pageTitle} = Astro.props;
+//js here - is thrown away after site final generation, it's used in build time, and only then
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <Header />
+    <h1>{pageTitle}</h1>
+    <slot />
+    <Footer />
+  </body>
+</html>
+
+<script>
+  //js here - is given to the browser, and can be used anytime, for example as event listner,
+  import "../scripts/menu.js"; // it's all in client-side
+</script>

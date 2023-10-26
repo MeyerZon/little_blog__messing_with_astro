@@ -1,0 +1,26 @@
+---
+
+interface SocialProps{
+    platform:string
+    username:string
+    extraLinkPath?:string
+}
+const {platform, username, extraLinkPath}:SocialProps = Astro.props
+---
+<style>
+    a {
+        padding: 0.5rem 1rem;
+        color: white;
+        background-color: #4c1d95;
+        text-decoration: none;
+    }
+</style>
+
+
+
+
+{extraLinkPath?
+<a target="_blank" href={`https://www.${platform}.com/${extraLinkPath}/${username}`}>{platform}</a>
+    :
+<a target="_blank" href={`https://www.${platform}.com/${username}`}>{platform}</a>}
+
